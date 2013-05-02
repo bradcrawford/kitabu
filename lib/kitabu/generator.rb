@@ -14,22 +14,21 @@ module Kitabu
       File.dirname(__FILE__) + "/../../templates"
     end
 
+    def copy_assets
+      copy_file "html.scss", "assets/styles/html.scss"
+      copy_file "epub.scss", "assets/styles/epub.scss"
+      copy_file "_fonts.scss", "assets/styles/_fonts.scss"
+      empty_directory "assets/images"
+      empty_directory "assets/fonts"
+    end
+
     def copy_html_templates
       copy_file "layout.erb"  , "templates/html/layout.erb"
-      copy_file "layout.css"  , "templates/html/layout.css"
-      copy_file "user.css"    , "templates/html/user.css"
-      copy_file "syntax.css"  , "templates/html/syntax.css"
     end
 
     def copy_epub_templates
       copy_file "cover.erb"   , "templates/epub/cover.erb"
-      copy_file "epub.css"    , "templates/epub/user.css"
       copy_file "epub.erb"    , "templates/epub/page.erb"
-      copy_file "cover.png"   , "templates/epub/cover.png"
-    end
-
-    def copy_sample_page
-      copy_file "sample.md"   , "text/01_Welcome.md"
     end
 
     def copy_config_file
@@ -45,8 +44,7 @@ module Kitabu
 
     def create_directories
       empty_directory "output"
-      empty_directory "images"
-      empty_directory "code"
+      empty_directory "text"
     end
 
     def create_git_files
@@ -55,12 +53,6 @@ module Kitabu
       end
 
       create_file "output/.gitkeep"
-      create_file "images/.gitkeep"
-      create_file "code/.gitkeep"
-    end
-
-    def copy_guardfile
-      copy_file "Guardfile", "Guardfile"
     end
 
     private

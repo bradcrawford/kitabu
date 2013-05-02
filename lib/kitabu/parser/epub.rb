@@ -102,8 +102,10 @@ module Kitabu
 
       def assets
         @assets ||= begin
-          assets = Dir[root_dir.join("templates/epub/*.css")]
-          assets += Dir[root_dir.join("images/**/*.{jpg,png,gif}")]
+          assets = []
+          assets += Dir[root_dir.join("output/assets/styles/epub.css")].collect{|file| {file => "styles"} }
+          assets += Dir[root_dir.join("output/assets/fonts/*.{ttf,otf}")].collect{|file| {file => "fonts"} }
+          assets += Dir[root_dir.join("output/assets/images/*.{jpg,png,gif}")].collect{|file| {file => "images"} }
           assets
         end
       end

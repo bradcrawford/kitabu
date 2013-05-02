@@ -17,6 +17,29 @@ module Kitabu
       @ui ||= Thor::Base.shell.new
     end
 
+    def export_assets
+      export_css
+      export_fonts
+      export_images
+    end
+
+    def export_css
+      FileUtils.mkpath("output/assets/styles/")
+      `sass assets/styles/html.scss output/assets/styles/html.css`
+      `sass assets/styles/epub.scss output/assets/styles/epub.css`
+
+    end
+
+    def export_fonts
+      FileUtils.mkpath("output/assets/fonts/")
+      FileUtils.cp_r("assets/fonts/", "output/assets/")
+    end
+
+    def export_images
+      FileUtils.mkpath("output/assets/images/")
+      FileUtils.cp_r("assets/images/", "output/assets/")
+    end
+
     def export!
       helper = root_dir.join("config/helper.rb")
       load(helper) if helper.exist?
@@ -25,6 +48,8 @@ module Kitabu
       export_epub = [nil, "mobi", "epub"].include?(options[:only])
       export_mobi = [nil, "mobi"].include?(options[:only])
       export_txt = [nil, "txt"].include?(options[:only])
+
+      export_assets
 
       exported = []
       exported << Parser::HTML.parse(root_dir)

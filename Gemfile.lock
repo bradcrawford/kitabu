@@ -10,14 +10,15 @@ PATH
       nokogiri
       notifier
       rdiscount
+      sass
       thor
 
 GEM
   remote: https://rubygems.org/
   specs:
     RedCloth (4.2.9)
-    activesupport (3.2.12)
-      i18n (~> 0.6)
+    activesupport (3.2.13)
+      i18n (= 0.6.1)
       multi_json (~> 1.0)
     awesome_print (1.1.0)
     builder (3.2.0)
@@ -26,7 +27,7 @@ GEM
     eeepub-with-cover-support (0.8.7)
       builder
       rubyzip
-    i18n (0.6.4)
+    i18n (0.6.1)
     method_source (0.8.1)
     multi_json (1.7.2)
     nokogiri (1.5.9)
@@ -38,7 +39,7 @@ GEM
     pry-nav (0.2.3)
       pry (~> 0.9.10)
     rake (10.0.4)
-    rdiscount (2.0.7.1)
+    rdiscount (2.0.7.2)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -48,6 +49,7 @@ GEM
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.0)
     rubyzip (0.9.9)
+    sass (3.2.8)
     slop (3.4.4)
     test_notifier (1.0.1)
       notifier
